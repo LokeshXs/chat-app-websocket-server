@@ -4,9 +4,12 @@ import url from "url";
 import { createClient } from "redis";
 import { ExtWebSocket } from "./@types/types";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
+
 const app = express();
+app.use(cors());
 const redisCli = createClient({
   url:process.env.REDIS_URL
 });
