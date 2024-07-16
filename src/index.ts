@@ -3,10 +3,13 @@ import { WebSocketServer, WebSocket, Server } from "ws";
 import url from "url";
 import { createClient } from "redis";
 import { ExtWebSocket } from "./@types/types";
+import dotenv from "dotenv";
 
-
+dotenv.config();
 const app = express();
-const redisCli = createClient();
+const redisCli = createClient({
+  url:process.env.REDIS_URL
+});
 
 const startServer = async () => {
   try {
